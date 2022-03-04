@@ -1,1 +1,11 @@
-<p>Welcome {{details.firstName}} {{details.lastName}}</p>
+<div id="welcomeMsg">
+    {{#if details}}
+        <p>Welcome to our community {{details.firstName}} {{details.lastName}}! <br><br>
+        We appreciate that you choose us to be your meal kit provider! <br>
+        We hope that you enjoy our meals and services, if there is any problems with anything don't hesitate to contact us at 'lyakubov@myseneca.ca'.<br>
+        have a great day!</p>
+        {{>hero}}
+    {{else}}
+        <p id="welcomeStranger">Welcome stranger, please consider signing up to our website <a href="/register">here</a></p>
+    {{/if}}
+</div>
