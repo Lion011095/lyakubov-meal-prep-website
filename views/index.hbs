@@ -1,0 +1,32 @@
+<!-- Name: Lion Yakubov
+     Student ID: lyakubov
+     Student #129517207 --> 
+{{>hero}}
+<div id="whyUs">
+    <h2>Why to choose cookZilla:</h2>
+</div>
+<div id="subHeadings">
+    <div class="subHeading">
+        <img src="/images/cooking.png" alt="https://www.pexels.com/photo/person-pouring-salt-in-bowl-1109197/">
+        <h3>we work with the best to make the best</h3>
+        <p>we work with the best chefs to create the best meals possible, for you to enjoy!</p>
+    </div>
+    <div class="subHeading">
+        <img src="/images/choosing.png" alt="https://www.pexels.com/photo/a-person-ordering-on-a-counter-8936887/">
+        <h3>we have more options</h3>
+        <p>we have a wide selection for you to choose from whether you're vegetarian, vegan or meat lover, there is plenty of recipes for everyone!</p>
+    </div>
+    <div class="subHeading">
+        <img src="/images/personal.png" alt="https://www.pexels.com/photo/man-people-woman-relaxation-4458389/">
+        <h3>personal experience</h3>
+        <p>In case you're having a problem or can't decide what meals to choose, you're welcome to give us a call and our team will help you out right away.</p>
+    </div>
+</div>
+<div id="favoriteMeals">
+    <h2>Our favorite meals:</h2>
+</div>
+<div id="meals">
+    {{#each meals}}
+        {{>mealkit this}}
+    {{/each}}
+</div>

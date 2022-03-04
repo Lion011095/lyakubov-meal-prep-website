@@ -1,0 +1,30 @@
+<!-- Name: Lion Yakubov
+     Student ID: lyakubov
+     Student #129517207 -->
+
+<h1>Login Page</h1>
+<section id="logInSection">
+     <form method="post" action="/login" id="logIn">
+          <fieldset id="log">
+               <legend>Log In</legend>
+               <br>
+               <label for="logInEmail">Email Address</label>
+               <input id="logInEmail" name="email" type="email" tabindex="1" placeholder="example@cookzilla.com"/>
+               {{#if errorMessages.email}}
+                    <br>
+                    <span style="color: red;">{{errorMessages.email}}</span>
+               {{/if}}
+               <br>
+               <br>
+               <label for="logInPassword">Password</label>
+               <input id="logInPassword" name="password" type="password" tabindex="2" placeholder="Type Here..."/>
+               {{#if errorMessages.password}}
+                    <br>
+                    <span style="color: red;">{{errorMessages.password}}</span>
+               {{/if}}
+               <br>
+               <br>
+               <input type="submit" name="submit" value="Log In" tabindex="3"/>
+          </fieldset>
+     </form>
+</section>

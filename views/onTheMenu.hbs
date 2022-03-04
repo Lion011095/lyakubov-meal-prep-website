@@ -1,0 +1,12 @@
+<!-- Name: Lion Yakubov
+     Student ID: lyakubov
+     Student #129517207 -->
+<h1>Menu Page</h1>
+{{#each meals}}
+    <h2 id="favoriteMeals">{{categoryName}}</h2>
+    <div id="mealsByCategory">
+        {{#each mealKits}}
+            {{>mealkit this}}
+        {{/each}}
+    </div>
+{{/each}}
