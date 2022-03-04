@@ -12,7 +12,7 @@
                <input id="logInEmail" name="email" type="email" tabindex="1" placeholder="example@cookzilla.com"/>
                {{#if errorMessages.email}}
                     <br>
-                    <span style="color: red;">{{errorMessages.email}}</span>
+                    <span class="error">{{errorMessages.email}}</span>
                {{/if}}
                <br>
                <br>
@@ -20,7 +20,7 @@
                <input id="logInPassword" name="password" type="password" tabindex="2" placeholder="Type Here..."/>
                {{#if errorMessages.password}}
                     <br>
-                    <span style="color: red;">{{errorMessages.password}}</span>
+                    <span class="error">{{errorMessages.password}}</span>
                {{/if}}
                <br>
                <br>

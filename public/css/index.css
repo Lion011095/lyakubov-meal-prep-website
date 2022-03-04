@@ -203,3 +203,11 @@ footer > p{
 .error {
     color: red;
 }
+
+#welcomeMsg {
+    text-align: center;
+}
+
+#welcomeStranger {
+    margin-bottom: 620px;
+}

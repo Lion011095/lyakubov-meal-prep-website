@@ -12,7 +12,7 @@
                <input id="firstName" name="firstName" type="text" placeholder="Type Here..." tabindex="1" value="{{details.firstName}}"/>
                {{#if errorMessages.firstName}}
                     <br>
-                    <span style="color: red;">{{errorMessages.firstName}}</span>
+                    <span class="error">{{errorMessages.firstName}}</span>
                {{/if}}
                <br>
                <br>
@@ -20,7 +20,7 @@
                <input id="lastName" name="lastName" type="text" tabindex="2" placeholder="Type Here..." value="{{details.lastName}}"/>
                {{#if errorMessages.lastName}}
                     <br>
-                    <span style="color: red;">{{errorMessages.lastName}}</span>
+                    <span class="error">{{errorMessages.lastName}}</span>
                {{/if}}
                <br>
                <br>
@@ -28,7 +28,7 @@
                <input id="email" name="email" type="text" tabindex="3" placeholder="example@cookzilla.com" value="{{details.email}}"/>
                {{#if errorMessages.email}}
                     <br>
-                    <span style="color: red;">{{errorMessages.email}}</span>
+                    <span class="error">{{errorMessages.email}}</span>
                {{/if}}
                <br>
                <br>
@@ -37,7 +37,7 @@
                {{#if passwordError}}
                     {{#each passwordError}}
                          <br>
-                         <span style="color: red;">{{this}}</span>
+                         <span class="error">{{this}}</span>
                     {{/each}}
                {{/if}}
                <br>
