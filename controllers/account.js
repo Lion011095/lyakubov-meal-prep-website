@@ -17,8 +17,6 @@ router.get("/welcome", (req, res) => {
 
 // post routes
 router.post("/register", (req, res) => {
-    console.log(req.body);
-
     const { firstName, lastName, email, password} = req.body;
 
     let valid = true;
@@ -102,12 +100,11 @@ router.post("/register", (req, res) => {
                 }); 
             })
             .catch(err => {
-                console.log(`Error ${err}`);
-
                 res.render("account/registration", {
                     details: req.body,
                     errorMessages,
-                    passwordError
+                    passwordError,
+                    err
                 });
             })
     }
@@ -143,7 +140,7 @@ router.post("/login", (req, res) => {
 
     if(valid)
     {
-        res.send("Welcome Page") // need to implement welcome page
+        res.send("User dash") // need to implement user dash
     }
     else
     {
