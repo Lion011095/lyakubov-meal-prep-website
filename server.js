@@ -42,18 +42,18 @@ mongoose.connect(process.env.MONGODB_CONN, {
     console.log("Connected to MongoDB database successfully.");
 })
 .catch((err) =>{
-    console.log(`There was a problem connecting to the database ${err}.`);
+    console.log(`There was a problem connecting to the database ${err}`);
 });
 
 // Setup a static resource folder.
 app.use(express.static("public"));
 
 // Controllers
-const accountController = require("./controllers/account");
-app.use("/account/", accountController);
-
 const generalController = require("./controllers/general");
 app.use("/", generalController);
+
+const accountController = require("./controllers/account");
+app.use("/", accountController);
 
 // *** DO NOT MODIFY THE LINES BELOW ***
 

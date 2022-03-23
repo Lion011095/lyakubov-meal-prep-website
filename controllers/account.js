@@ -1,4 +1,5 @@
 const express = require('express');
+const accountModel = require('../models/account');
 const router = express.Router();
 
 
@@ -81,6 +82,13 @@ router.post("/register", (req, res) => {
         const sgMail = require("@sendgrid/mail");
         sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
 
+        const account = new accountModel({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: req.body.password,
+        });
+
         const msg = {
             to: `${email}`,
             from: "lyakubov@myseneca.ca",
@@ -93,10 +101,13 @@ router.post("/register", (req, res) => {
                 Lion Yakubov`
         };
 
-        sgMail.send(msg)
+        account.save()
+        .then((accountSaved) => {
+            console.log(`Account ${accountSaved.firstName} has been added to the database.`);
+            sgMail.send(msg)
             .then(() => {
                 res.render("account/welcome", {
-                    details: req.body
+                details: req.body
                 }); 
             })
             .catch(err => {
@@ -107,6 +118,17 @@ router.post("/register", (req, res) => {
                     err
                 });
             })
+        })
+        .catch((err) => {
+            console.log(`Couldn't add account to the database: ${err}`);
+            res.render("account/registration", {
+                details: req.body,
+                errorMessages,
+                passwordError
+            });
+        });
+
+        
     }
     else
     {
