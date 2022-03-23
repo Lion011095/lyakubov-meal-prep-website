@@ -10,7 +10,6 @@
 *
 ************************************************************************************/
 
-const mealkitDb = require("./models/mealkit-db.js");
 const path = require("path");
 const express = require("express");
 const exphbs = require('express-handlebars');
@@ -18,7 +17,7 @@ const res = require("express/lib/response");
 
 // Dotenv
 const dotenv = require("dotenv");
-dotenv.config({ path: "./config/keys.env"})
+dotenv.config({ path: "./config/keys.env"});
 
 // Express
 const app = express();
@@ -34,24 +33,16 @@ app.set('view engine', '.hbs');
 app.use(express.urlencoded({ extended: false }));
 
 // Setup a static resource folder.
-app.use(express.static("public"))
+app.use(express.static("public"));
 
 // Controllers
 const accountController = require("./controllers/account");
 app.use("/", accountController);
 
-// Routes
-app.get("/", (req, res) => {
-    res.render("index", {
-        meals: mealkitDb.getTopMeals()
-    });
-});
+const generalController = require("./controllers/general");
+app.use("/", generalController);
 
-app.get("/on-the-menu", (req, res) => {
-    res.render("onTheMenu", {
-        meals: mealkitDb.getMealsByCategory()
-    });
-});
+// Routes
 
 // *** DO NOT MODIFY THE LINES BELOW ***
 
