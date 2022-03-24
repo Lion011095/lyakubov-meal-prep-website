@@ -21,7 +21,20 @@
                     <br>
                     <span class="error">{{errorMessages.password}}</span>
                {{/if}}
+               {{#if errorMessages.invalid}}
+                    <br>
+                    <span class="error">{{errorMessages.invalid}}</span>
+               {{/if}}
+               {{#if errorMessages.databaseError}}
+                    <br>
+                    <span class="error">{{errorMessages.databaseError}}</span>
+               {{/if}}
                <br>
+               <br>
+               <input type="radio" id="dataClerk" name="userType" value="dataClerk">
+               <label for="dataClerk"> data Clerk</label><br>
+               <input type="radio" id="customer" name="userType" value="customer" checked>
+               <label for="customer"> customer</label><br>
                <br>
                <input type="submit" name="submit" value="Log In" tabindex="3"/>
           </fieldset>

@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const express = require('express');
 const accountModel = require('../models/account');
 const router = express.Router();
@@ -142,7 +143,6 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    console.log(req.body);
     
     const {email, password} = req.body;
     let errorMessages = {};
@@ -162,7 +162,48 @@ router.post("/login", (req, res) => {
 
     if(valid)
     {
-        res.send("User dash") // need to implement user dash
+        accountModel.findOne({
+            email: req.body.email
+        })
+        .then(account => {
+            if(account)
+            {
+                bcrypt.compare(req.body.password, account.password)
+                .then(isMatched => {
+                    if(isMatched)
+                    {
+                        // need to implement user and clerck dashs
+                        res.render("account/welcome", {
+                            details: req.body
+                            });
+                    }
+                    else
+                    {
+                        console.log("Password dont match to the email");
+                        errorMessages.invalid = "Sorry, password or email are invalid. please try again.";
+    
+                        res.render("account/login", {
+                            errorMessages
+                        });
+                    }
+                })
+            }
+            else
+            {
+                errorMessages.invalid = "Sorry, password or email are invalid. please try again.";
+                res.render("account/login", {
+                    errorMessages
+                });
+            }
+        })
+        .catch(err => {
+            console.log(`Couldn't find the user in the database: ${err}`);
+            errorMessages.databaseError = "something went wrong, Sorry for the inconvenience.";
+    
+            res.render("account/login", {
+                errorMessages
+            });
+        });
     }
     else
     {
