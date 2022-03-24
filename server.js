@@ -40,6 +40,8 @@ app.use(session({
 
 app.use((req, res, next) => {
     res.locals.account = req.session.account;
+    req.session.isCustomer;
+    req.session.isClerk;
     next();
 })
 

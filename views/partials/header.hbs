@@ -7,6 +7,11 @@
         <a href="/">Home Page</a>
         <a href="/on-the-menu">Weekly Recipes</a>
         {{#if account}}
+            {{#if isCustomer}}
+                <a href="/customerDash">{{account.firstName}} {{account.lastName}}</a>
+            {{else}}
+                <a href="/clerkDash">{{account.firstName}} {{account.lastName}}</a>
+            {{/if}}
             <a href="/logout">Logout</a>
         {{else}}
             <a href="/register">Registration</a>

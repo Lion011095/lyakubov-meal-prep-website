@@ -19,7 +19,29 @@ router.get("/welcome", (req, res) => {
 
 router.get("/logout", (req, res) => {
     req.session.destroy();
-    res.render("account/login");
+    res.redirect("/login");
+})
+
+router.get("/customerDash", (req, res) => {
+    if(req.session.isCustomer)
+    {
+        res.render("account/customerDash");
+    }
+    else
+    {
+        res.redirect("/");
+    }
+})
+
+router.get("/clerkDash", (req, res) => {
+    if(req.session.isClerk)
+    {
+        res.render("account/clerkDash");
+    }
+    else
+    {
+        res.redirect("/");
+    }
 })
 
 // post routes
@@ -177,13 +199,18 @@ router.post("/login", (req, res) => {
                 .then(isMatched => {
                     if(isMatched)
                     {
-                        // need to implement user and clerck dashs
                         req.session.account = account;
-                        req.session.isCustomer = req.body.customer === "customer";
+                        req.session.isCustomer = req.body.userType === "customer";
+                        req.session.isClerk = req.body.userType === "dataClerk";
 
-                        res.render("account/welcome", {
-                            details: req.body
-                            });
+                        if(req.session.isCustomer)
+                        {
+                            res.redirect("/customerDash");
+                        }
+                        else
+                        {
+                            res.redirect("/clerkDash");
+                        }
                     }
                     else
                     {
