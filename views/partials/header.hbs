@@ -6,7 +6,11 @@
     <div id="navigationBar">
         <a href="/">Home Page</a>
         <a href="/on-the-menu">Weekly Recipes</a>
-        <a href="/register">Registration</a>
-        <a href="/login">Login</a>
+        {{#if account}}
+            <a href="/logout">Logout</a>
+        {{else}}
+            <a href="/register">Registration</a>
+            <a href="/login">Login</a>
+        {{/if}}
     </div>
 </div>

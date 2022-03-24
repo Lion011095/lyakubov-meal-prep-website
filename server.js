@@ -12,9 +12,10 @@
 
 const path = require("path");
 const express = require("express");
-const exphbs = require('express-handlebars');
+const exphbs = require("express-handlebars");
 const res = require("express/lib/response");
 const mongoose = require("mongoose");
+const session = require("express-session");
 
 // Dotenv
 const dotenv = require("dotenv");
@@ -29,6 +30,18 @@ app.engine('.hbs', exphbs.engine({
     defaultLayout: "main"
 }));
 app.set('view engine', '.hbs');
+
+// express-session
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use((req, res, next) => {
+    res.locals.account = req.session.account;
+    next();
+})
 
 // Body Parser
 app.use(express.urlencoded({ extended: false }));

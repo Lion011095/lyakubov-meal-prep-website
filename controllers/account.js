@@ -17,6 +17,11 @@ router.get("/welcome", (req, res) => {
     res.render("account/welcome");
 });
 
+router.get("/logout", (req, res) => {
+    req.session.destroy();
+    res.render("account/login");
+})
+
 // post routes
 router.post("/register", (req, res) => {
     const { firstName, lastName, email, password} = req.body;
@@ -173,6 +178,9 @@ router.post("/login", (req, res) => {
                     if(isMatched)
                     {
                         // need to implement user and clerck dashs
+                        req.session.account = account;
+                        req.session.isCustomer = req.body.customer === "customer";
+
                         res.render("account/welcome", {
                             details: req.body
                             });
@@ -212,5 +220,7 @@ router.post("/login", (req, res) => {
         });
     }
 });
+
+
 
 module.exports = router;
