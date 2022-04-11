@@ -1,3 +1,6 @@
+/* Name: Lion Yakubov
+     Student ID: lyakubov
+     Student #129517207 */
 const bcrypt = require('bcryptjs');
 const mongoose = require("mongoose");
 

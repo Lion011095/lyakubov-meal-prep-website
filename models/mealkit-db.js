@@ -2,6 +2,45 @@
      Student ID: lyakubov
      Student #129517207 */
 
+const mongoose = require("mongoose");
+
+const mealKitScheme = new mongoose.Scheme({
+     title: {
+          type: String,
+          unique: true
+     },
+     includes: {
+          type: String
+     },
+     description: {
+          type: String
+     },
+     category: {
+          type: String
+     },
+     price: {
+          type: Number
+     },
+     cookingTime: {
+          type: Number
+     },
+     servings: {
+          type: Number
+     },
+     caloriesPerServing: {
+          type: Number
+     },
+     imageUrl: {
+          type: String
+     },
+     topMeal: {
+          type: Boolean
+     } 
+});
+
+const mealKitModel = mongoose.model("mealKits", mealKitScheme);
+module.exports = mealKitModel;
+
 const mealKitArr = [
      {
           title: "schnitzel with fries",
