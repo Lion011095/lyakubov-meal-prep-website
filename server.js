@@ -64,11 +64,15 @@ mongoose.connect(process.env.MONGODB_CONN, {
 app.use(express.static("public"));
 
 // Controllers
+const loadDataController = require("./controllers/loadData");
+app.use("/", loadDataController);
+
 const generalController = require("./controllers/general");
 app.use("/", generalController);
 
 const accountController = require("./controllers/account");
 app.use("/", accountController);
+
 
 // *** DO NOT MODIFY THE LINES BELOW ***
 

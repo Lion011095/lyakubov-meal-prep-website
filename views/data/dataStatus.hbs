@@ -1,0 +1,13 @@
+{{#if isClerk}}
+    {{#if error}}
+        <P>An error accrued: {{error}}</P>
+    {{/if}}
+    {{#if success}}
+        <P>Added meal kits to the database</P>
+    {{/if}}
+    {{#if loaded}}
+        <P>Meal kits have already been added to the database</P>
+    {{/if}}
+{{else}}
+    <p>You are not authorized to add meal kits</p>
+{{/if}}

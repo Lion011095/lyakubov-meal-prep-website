@@ -4,7 +4,7 @@
 
 const mongoose = require("mongoose");
 
-const mealKitScheme = new mongoose.Scheme({
+const mealKitSchema = new mongoose.Schema({
      title: {
           type: String,
           unique: true
@@ -38,7 +38,7 @@ const mealKitScheme = new mongoose.Scheme({
      } 
 });
 
-const mealKitModel = mongoose.model("mealKits", mealKitScheme);
+const mealKitModel = mongoose.model("mealKits", mealKitSchema);
 module.exports = mealKitModel;
 
 const mealKitArr = [
@@ -165,4 +165,9 @@ module.exports.getMealsByCategory = function()
           added = false;
      }
      return mealsByCategory;
+}
+
+module.exports.getAllMealKits = function ()
+{
+     return mealKitArr;
 }
