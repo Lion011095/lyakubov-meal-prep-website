@@ -1,4 +1,4 @@
-# WEB322 Project (Winter 2022)
+# Meal Prep Web Application Project
 I declare that this assignment is my own work in accordance with
 the Seneca Academic Policy. No part of this assignment has been
 copied manually or electronically from any other source
